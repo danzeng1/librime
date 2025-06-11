@@ -242,8 +242,17 @@ if(INSTALL_PRIVATE_HEADERS)
 endif()
 
 if(BUILD_DATA)
-  file(GLOB rime_preset_data_files ${PROJECT_SOURCE_DIR}/data/preset/*.yaml)
+ file(GLOB rime_preset_data_files ${PROJECT_SOURCE_DIR}/data/preset/*.yaml)
   install(FILES ${rime_preset_data_files} DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/${RIME_DATA_DIR})
+  install(
+    FILES data/schemas/tibetan_wylie.schema.yaml
+    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/${RIME_DATA_DIR}/schemas
+  )
+
+  install(
+    FILES data/dictionaries/tibetan.dict.yaml
+    DESTINATION ${CMAKE_INSTALL_FULL_DATADIR}/${RIME_DATA_DIR}/dictionaries
+  )
 endif()
 
 if(BUILD_SHARED_LIBS)
